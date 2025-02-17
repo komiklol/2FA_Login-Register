@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #2a2a40;
+            color: #e0e0e0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        form {
+            margin: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 300px;
+            margin-bottom: 10px;
+            background-color: #2a2a40;
+            color: #e0e0e0;
+            border: 1px solid #bb86fc;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #bb86fc;
+            color: #2a2a40;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <form method="POST" action="/register">
+            <input type="text" name="username" placeholder="Benutzername" required>
+            <input type="password" name="password" placeholder="Passwort" required>
+            <div id="qrcode">
+                <h3 style="color: #bb86fc;">Dein QR Code:</h3>
+                <img src="data:image/png;base64,{{ qr_code_image }}" alt="QR Code">
+            </div>
+            <input type="password" name="twofa_code" placeholder="Code" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

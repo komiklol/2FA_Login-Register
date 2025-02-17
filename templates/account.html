@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #2a2a40;
+            color: #e0e0e0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #bb86fc;
+            color: #2a2a40;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #9b6acf;
+        }
+        .box {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #bb86fc;
+            border-radius: 10px;
+            background-color: #383853;
+            max-width: 400px;
+        }
+        h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        #qrcode {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('change2fa') }}" class="button">Change 2FA Status</a>
+        <div class="box">
+            <h3>2FA Status: {{ twoFA_STATUS }}</h3>
+        </div>
+        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+        <div id="qrcode">
+            <img src="data:image/png;base64,{{ qr_code_image }}" alt="QR Code">
+        </div>
+    </div>
+</body>
+</html>
