@@ -14,8 +14,8 @@ Diese Anwendung bietet folgende Hauptfunktionen:
 ### 1. Repository klonen 
 Klonen Sie das Repository in Ihr Arbeitsverzeichnis:
 ``` shell
-git clone https://github.com/your-username/your-repository.git
-cd your-repository
+git clone https://github.com/komiklol/2FA_Login-Register
+cd 2FA_Login-Register
 ```
 ### 2. Umgebung einrichten 
 Richten Sie eine virtuelle Umgebung ein, um Abhängigkeiten isoliert zu installieren:
@@ -35,7 +35,7 @@ Installieren Sie die erforderlichen Python-Pakete:
 ``` shell
 pip install Flask flask-bcrypt pyotp qrcode[pil]
 ```
-### 4. Anwendung starten **(Run the Application)**
+### 4. Anwendung starten
 Starten Sie die Flask-Anwendung:
 ``` shell
 flask --app app.py run
@@ -43,18 +43,19 @@ flask --app app.py run
 Die Anwendung ist standardmäßig unter **[http://127.0.0.1:5000](http://127.0.0.1:5000)** erreichbar.
 ## Routen und Nutzung **(Routes and Usage)**
 
-| **Route** | **Beschreibung** |
-| --- | --- |
-| **`/`** | Startseite mit Links zur Registrierung oder Login-Seite. |
-| **`/register`** | Registrierungsseite: Erlaubt Nutzern, ein Konto zu erstellen und 2FA zu aktivieren. |
-| **`/login`** | Login-Seite: Prüft Benutzername, Passwort und 2FA-Code und gibt bei Erfolg Zugriff. |
-| **`/account`** | Benutzerkonto: Zeigt 2FA-Status an und bietet Optionen zur Änderung der Einstellungen. |
-| **`/change2fa`** | Seite zur Aktivierung/Deaktivierung von 2FA. |
-| **`/logout`** | Loggt Nutzer aus und beendet die Sitzung. |
+| **Route**        | **Beschreibung**                                                                       |
+|------------------|----------------------------------------------------------------------------------------|
+| **`/`**          | Startseite mit Links zur Registrierung oder Login-Seite.                               |
+| **`/register`**  | Registrierungsseite: Erlaubt Nutzern, ein Konto zu erstellen und 2FA zu aktivieren.    |
+| **`/login`**     | Login-Seite: Prüft Benutzername, Passwort und 2FA-Code und gibt bei Erfolg Zugriff.    |
+| **`/account`**   | Benutzerkonto: Zeigt 2FA-Status an und bietet Optionen zur Änderung der Einstellungen. |
+| **`/change2fa`** | Seite zur Aktivierung/Deaktivierung von 2FA.                                           |
+| **`/logout`**    | Loggt Nutzer aus und beendet die Sitzung.                                              |
 ## Benutzung des 2FA-Workflows
-1. Ein Benutzer kann sich auf der **Registrierungsseite** anmelden. Nach der Registrierung wird ein **QR-Code** generiert.
+1. Ein Benutzer kann sich auf der **Registrierungsseite** einen Account erstellen, dabei wird ein QR-Code erstellt.  
 2. Der QR-Code kann mit einer Authenticator-App wie [Google Authenticator](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2) gescannt werden, um Zugriff auf TOTP-Codes zu erhalten.
-3. Für jeden Login wird ein neuer temporärer Code benötigt, der über die Authenticator-App eingegeben werden muss.
+3. Für das Registrieren wird dieser Code benötigt, der über die Authenticator-App bereitgestellt wird.
+4. Wenn im Account die 2FA auf **True** steht, benötigt man seinen Code bei jedem Login. 
 
 ## Erforderliche Installation
 Für dieses Projekt werden folgende Technologien benötigt:
